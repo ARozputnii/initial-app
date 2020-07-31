@@ -1,0 +1,21 @@
+<div class="session container-fluid">
+  <%= form_tag '/backoffice' do %>
+    <div class="content_session">
+      <div class='pb-3 text-center'>
+        <%= label_tag :login , "Login", class:"col-form-label"%>
+      </div>
+      <div class='pb-4'>
+        <%= text_field_tag :login , nil, class:"form-control  text-center  " %>
+      </div>
+      <div class='pb-3 text-center'>
+        <%= label_tag :password, "Password", class:"col-form-label" %>
+      </div>
+      <div class='pb-4'>
+        <%= password_field_tag :password , nil, class:"form-control text-center " %>
+      </div>
+      <div class="actions text-center pt-3 mb-5">
+        <%= submit_tag 'Login', class:"btn btn-outline-light mr-3" %>
+      </div>
+    </div>
+  <% end %>
+</div>
