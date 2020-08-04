@@ -1,5 +1,6 @@
 class Backoffice::SessionsController < Backoffice::BackofficesController
   layout 'sessions'
+  skip_before_action :authorization
 
   def new; end
 

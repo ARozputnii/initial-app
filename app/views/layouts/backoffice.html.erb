@@ -12,7 +12,17 @@
 
 <body>
 <div class="container-fluid">
-  <%= yield %>
+  <div class="row">
+    <div class="col-md-4 col-lg-2 sidebar">
+      <%= render "backoffice/shared/sidebar" %>
+    </div>
+    <div class="yield offset-4 offset-md-3 offset-lg-2 col-8 col-md-9 col-lg-10">
+      <div class="p-1">
+        <%= render 'backoffice/shared/message' %>
+        <%= yield %>
+      </div>
+    </div>
+  </div>
 </div>
 </body>
 </html>

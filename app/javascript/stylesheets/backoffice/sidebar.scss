@@ -1,0 +1,19 @@
+.sidebar {
+  background: #2E2F30;
+  position: fixed;
+  height: 100vh;
+}
+
+.sidebar .root-link { font-size: 30px; }
+.sidebar .root-link:link {  color: #e3d9d9;}
+.sidebar .root-link:visited { text-decoration: none; color: #e3d9d9;}
+.sidebar .root-link:active { text-decoration: none; color: #e3d9d9;}
+.sidebar .root-link:hover { text-decoration: none; color: #ffffff;}
+
+.sidebar .link {
+  font-size: 16px;
+}
+
+.sidebar .link:link {  color: #e3d9d9;}
+.sidebar .link:active { text-decoration: none; }
+.sidebar .link:hover { text-decoration: none; border-left: 1px solid #a89f9f; background: #515355;}

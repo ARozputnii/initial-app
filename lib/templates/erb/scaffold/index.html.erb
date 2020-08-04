@@ -1,0 +1,37 @@
+<section class="  mt-2 pt-2  row justify-content-between mx-auto">
+  <h1>Listing <%= plural_table_name.capitalize %></h1>
+  <%%= link_to 'New <%= singular_table_name %>', new_backoffice_<%= singular_table_name %>_path, class:'btn btn-primary  mb-2 mr-2 pt-2' %>
+</section>
+
+<%% if @<%= plural_table_name %>.exists? %>
+<table class="mt-5 container-fluid justify-content-center shadow table table-bordered text-center">
+  <thead class="thead-dark">
+  <tr class="h5">
+    <% attributes.reject(&:password_digest?).each do |attribute| -%>
+    <th scope="row"><%= attribute.human_name %></th>
+    <% end %>
+    <th scope="row">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+  <tr>
+    <% attributes.reject(&:password_digest?).each do |attribute| -%>
+    <td class="p-3"><%%= truncate(<%= singular_table_name %>.<%= attribute.column_name %>, length: 40) %></td>
+    <% end %>
+    <td>
+      <%%= link_to backoffice_<%= singular_table_name %>_path(<%= singular_table_name %>), class:'btn btn-warning btn-sm mr-1' do %>
+      <i class="far fa-eye"></i>
+      <%% end %>
+      <%%= link_to edit_backoffice_<%= singular_table_name %>_path(<%= singular_table_name %>), class:'btn btn-success btn-sm mr-1' do %>
+      <i class="fas fa-pencil-alt"></i>
+      <%% end %>
+      <%%= link_to backoffice_<%= singular_table_name %>_path(<%= singular_table_name %>), method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger btn-sm' do %>
+      <i class="far fa-trash-alt"></i>
+      <%% end %>
+    </td>
+  </tr>
+  <%% end %>
+  </tbody>
+</table>
+<%% end %>

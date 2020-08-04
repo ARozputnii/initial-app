@@ -1,0 +1,38 @@
+<section class="mt-2 pt-2  row justify-content-start mx-auto">
+  <h1>Show Admin</h1>
+</section>
+
+  <div class="container-fluid shadow mx-auto my-8 px-4 mt-5">
+    <div class="row">
+      <div class="col-3 col-md-2 mt-3">
+        <p class="h5 offset-1">Login:</p>
+      </div>
+      <div class="col-9 col-md-10 mt-3">
+        <p class="text-justify"><%= @admin.login %></p>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid shadow mx-auto my-8 px-4 mt-5">
+    <div class="row">
+      <div class="col-3 col-md-2 mt-3">
+        <p class="h5 offset-1">Password digest:</p>
+      </div>
+      <div class="col-9 col-md-10 mt-3">
+        <p class="text-justify"><%= @admin.password_digest %></p>
+      </div>
+    </div>
+  </div>
+<div class="container-fluid shadow mt-5">
+  <div class="row">
+    <div class="col-3 col-md-2 mt-3">
+      <p class="h5 offset-1">Created at: </p>
+    </div>
+    <div class="col-9 col-md-10 mt-3">
+      <p class="leading-normal"><%= @admin.created_at.strftime("%m/%d/%Y at %I:%M%p") %></p>
+    </div>
+  </div>
+</div>
+<section class="mx-auto mt-5  row justify-content-start">
+  <%= link_to 'Edit admin', edit_backoffice_admin_path(@admin), class: 'btn btn-primary mr-1'%>
+  <%= link_to 'Back', backoffice_admins_path, class: "btn btn-primary " %>
+</section>
