@@ -1,0 +1,23 @@
+<div class="pb-3 pt-3 mb-3">
+  <%= link_to 'Backoffice', root_path, class: 'root-link' %>
+</div>
+<div class="pt-1 pb-1 link ml-3">
+  <i class="text-white-50 fas fa-tachometer-alt ml-1"></i><%= link_to 'Dashboard', backoffices_path, class: 'text-white  p-2' %>
+</div>
+
+<p class="text-white-50 text-uppercase mt-5">content management</p>
+<div class="ml-3 mt-3">
+  <p class="pt-1 pb-1 link">
+    <i class="ml-1 text-white-50 fas fa-circle"></i><%= link_to 'Link1', '#', class: 'text-white p-2' %>
+  </p>
+  <p class="pt-1 pb-1 link">
+    <i class="ml-1 text-white-50 fas fa-circle"></i><%= link_to 'Link2', '#', class: 'text-white p-2' %>
+  </p>
+  <p class="pt-1 pb-1 link">
+    <i class="ml-1 text-white-50 fas fa-circle"></i><%= link_to 'Link3', '#', class: 'text-white p-2' %>
+  </p>
+</div>
+<p class="text-white-50 text-uppercase mt-5">configuration</p>
+<div class="ml-3 mt-3 pt-1 pb-1 link">
+  <i class="text-white-50 fas fa-users-cog ml-1"></i></i><%= link_to 'Administrators', backoffice_admins_path, class: 'text-white  p-2' %>
+</div>
