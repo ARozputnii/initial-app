@@ -1,0 +1,33 @@
+<section class="  mt-2 pt-2  row justify-content-between mx-auto">
+  <h1>Listing Admins</h1>
+  <%= link_to 'New admin', new_backoffice_admin_path, class:'btn btn-primary  mb-2 mr-2 pt-2' %>
+</section>
+
+<% if @admins.exists? %>
+  <table class="mt-5 container-fluid justify-content-center shadow table table-bordered text-center">
+    <thead class="thead-dark">
+    <tr class="h5">
+      <th scope="row">Login</th>
+      <th scope="row">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @admins.each do |admin| %>
+      <tr>
+        <td class="p-3"><%= truncate(admin.login, length: 40) %></td>
+        <td>
+          <%= link_to backoffice_admin_path(admin), class:'btn btn-warning btn-sm mr-1' do %>
+            <i class="far fa-eye"></i>
+          <% end %>
+          <%= link_to edit_backoffice_admin_path(admin), class:'btn btn-success btn-sm mr-1' do %>
+            <i class="fas fa-pencil-alt"></i>
+          <% end %>
+          <%= link_to backoffice_admin_path(admin), method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger btn-sm' do %>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>

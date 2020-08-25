@@ -1,5 +1,6 @@
 class Backoffice::BackofficesController < ActionController::Base
   layout 'backoffice'
+  before_action :authorization
 
   def current_user
     Admin.find_by(id: session[:admin_id])

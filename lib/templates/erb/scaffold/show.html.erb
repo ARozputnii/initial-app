@@ -1,0 +1,30 @@
+<section class="mt-2 pt-2  row justify-content-start mx-auto">
+  <h1>Show <%= singular_table_name.capitalize %></h1>
+</section>
+
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+  <div class="container-fluid shadow mx-auto my-8 px-4 mt-5">
+    <div class="row">
+      <div class="col-3 col-md-2 mt-3">
+        <p class="h5 offset-1"><%= attribute.human_name %>:</p>
+      </div>
+      <div class="col-9 col-md-10 mt-3">
+        <p class="text-justify"><%%= @<%= singular_table_name %>.<%= attribute.name %> %></p>
+      </div>
+    </div>
+  </div>
+<% end -%>
+<div class="container-fluid shadow mt-5">
+  <div class="row">
+    <div class="col-3 col-md-2 mt-3">
+      <p class="h5 offset-1">Created at: </p>
+    </div>
+    <div class="col-9 col-md-10 mt-3">
+      <p class="leading-normal"><%%= @<%= singular_table_name %>.created_at.strftime("%m/%d/%Y at %I:%M%p") %></p>
+    </div>
+  </div>
+</div>
+<section class="mx-auto mt-5  row justify-content-start">
+  <%%= link_to 'Edit <%= singular_table_name %>', edit_backoffice_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: 'btn btn-primary mr-1'%>
+  <%%= link_to 'Back', backoffice_<%= plural_table_name %>_path, class: "btn btn-primary " %>
+</section>

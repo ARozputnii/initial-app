@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2020_07_31_144744) do
 
   create_table "admins", force: :cascade do |t|
     t.string "login"
+    t.string "old_pass"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
