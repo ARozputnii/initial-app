@@ -23,10 +23,12 @@ class Backoffice::AdminsController < Backoffice::BackofficesController
   end
 
   def update
-    if @admin.update(admin_params)
-      redirect_to backoffice_admins_path, notice: 'Admin was successfully updated.'
+    admin = Admin.find_by(login: admin_params['login']).authenticate(admin_params['old_pass'])
+    if admin == @admin
+      @admin.update(admin_params)
+      redirect_to backoffice_admins_path, notice: 'User was successfully updated.'
     else
-      render :edit
+      redirect_to edit_backoffice_admin_path, alert: 'Invalid old or new/confirmation password'
     end
   end
 
@@ -42,6 +44,6 @@ class Backoffice::AdminsController < Backoffice::BackofficesController
   end
 
   def admin_params
-    params.require(:admin).permit(:login, :password_digest)
+    params.require(:admin).permit(:login, :password, :old_pass, :password_confirmation)
   end
 end
