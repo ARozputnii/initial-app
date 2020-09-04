@@ -10,6 +10,5 @@ class Backoffice::BackofficesController < ActionController::Base
     redirect_to backoffice_path if current_user.nil?
   end
 
-  def home
-  end
+  def home; end
 end
