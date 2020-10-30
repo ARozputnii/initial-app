@@ -41,6 +41,5 @@ yarn-debug.log*
 /config/application.yml
 config/master.key/config/database.production.yml
 /config/database.production.yml
-/config/secrets.production.yml
 /config/secrets.yml
 /config/credentials.yml.enc
