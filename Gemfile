@@ -30,6 +30,14 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
+
+  gem 'capistrano', '~> 3.8', '>= 3.8.1'
+  gem 'capistrano-rvm', '~> 0.1.2'
+  gem 'capistrano-rails', '~> 1.2', '>= 1.2.3'
+  gem 'capistrano3-puma', github: "seuros/capistrano-puma"
+  gem 'capistrano-nginx', '~> 1.0'
+  gem 'capistrano-upload-config', '~> 0.7.0'
+  gem 'sshkit-sudo', '~> 0.1.0'
 end
 
 group :test do

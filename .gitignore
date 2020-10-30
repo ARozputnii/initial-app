@@ -39,4 +39,7 @@ yarn-debug.log*
 /public/uploads
 /config/database.yml
 /config/application.yml
-config/master.key
+config/master.key/config/database.production.yml
+/config/database.production.yml
+/config/secrets.production.yml
+config/secrets.yml
