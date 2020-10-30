@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'pages/home'
   root 'pages#home'
 
   get 'backoffice', to: 'backoffice/sessions#new'
