@@ -20,7 +20,7 @@ set :puma_restart_command, 'sudo systemctl restart puma.service'
 namespace :deploy do
   before 'check:linked_files', 'set:master_key'
   before 'check:linked_files', 'config:push'
-  before 'check:linked_files', 'puma:jungle:setup'
+  before 'check:linked_files', 'puma:config'
   # before 'check:linked_files', 'puma:nginx_config'
   after 'puma:smart_restart', 'nginx:restart'
 end
