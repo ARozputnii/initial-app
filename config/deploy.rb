@@ -5,7 +5,7 @@ set :repo_url, 'git@github.com:ARozputnii/initial-app.git'
 ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 set :user, 'deployer'
 set :deploy_to, "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
-set :pty, false
+set :pty, true
 
 set :rvm_ruby_version, '2.7.1'
 
@@ -15,7 +15,6 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bund
 set :config_example_suffix, '.example'
 set :config_files, %w{config/database.yml}
 set :puma_conf, "#{shared_path}/config/puma.rb"
-set :puma_restart_command, 'sudo systemctl restart puma.service'
 
 namespace :deploy do
   before 'check:linked_files', 'set:master_key'
@@ -34,3 +33,4 @@ namespace :set do
     end
   end
 end
+

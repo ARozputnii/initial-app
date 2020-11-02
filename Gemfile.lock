@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/seuros/capistrano-puma.git
+  revision: b148515f78476b68ab8e09bcc494e82ceb53eba0
+  specs:
+    capistrano3-puma (4.0.0)
+      capistrano (~> 3.7)
+      capistrano-bundler
+      puma (~> 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -85,20 +94,11 @@ GEM
     capistrano-rails (1.6.1)
       capistrano (~> 3.1)
       capistrano-bundler (>= 1.1, < 3)
-    capistrano-rails-console (2.3.0)
-      capistrano (>= 3.5.0, < 4.0.0)
-      sshkit-interactive (~> 0.3.0)
-    capistrano-rails-db (0.0.2)
-      capistrano-rails (~> 1.1)
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
     capistrano-upload-config (0.7.0)
       capistrano (>= 3.0)
-    capistrano3-puma (4.0.0)
-      capistrano (~> 3.7)
-      capistrano-bundler
-      puma (~> 4.0)
     capybara (3.33.0)
       addressable
       mini_mime (>= 0.1.3)
@@ -231,8 +231,6 @@ GEM
     sshkit (1.21.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    sshkit-interactive (0.3.0)
-      sshkit (~> 1.12)
     sshkit-sudo (0.1.0)
       sshkit (~> 1.8)
     thor (1.0.1)
@@ -272,14 +270,12 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   bootstrap (~> 4.3.1)
   byebug
-  capistrano (~> 3.12)
-  capistrano-nginx
-  capistrano-rails (~> 1.4)
-  capistrano-rails-console
-  capistrano-rails-db
-  capistrano-rvm
-  capistrano-upload-config
-  capistrano3-puma
+  capistrano (~> 3.8, >= 3.8.1)
+  capistrano-nginx (~> 1.0)
+  capistrano-rails (~> 1.2, >= 1.2.3)
+  capistrano-rvm (~> 0.1.2)
+  capistrano-upload-config (~> 0.7.0)
+  capistrano3-puma!
   capybara (>= 2.15)
   jbuilder (~> 2.7)
   listen (~> 3.2)
@@ -292,7 +288,7 @@ DEPENDENCIES
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
-  sshkit-sudo
+  sshkit-sudo (~> 0.1.0)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)
