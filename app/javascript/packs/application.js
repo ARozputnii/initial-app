@@ -5,3 +5,5 @@ require("channels")
 require("jquery")
 
 import "bootstrap";
+// scss
+import "../stylesheets/application.scss";
