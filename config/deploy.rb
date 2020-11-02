@@ -15,33 +15,24 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bund
 set :config_example_suffix, '.example'
 set :config_files, %w{config/database.yml}
 set :puma_conf, "#{shared_path}/config/puma.rb"
+set :puma_bind, "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock"
+set :puma_state, "#{shared_path}/tmp/pids/puma.state"
+set :puma_pid, "#{shared_path}/tmp/pids/puma.pid"
 
-# namespace :deploy do
-#   before 'check:linked_files', 'set:master_key'
-#   before 'check:linked_files', 'config:push'
-#   before 'check:linked_files', 'puma:jungle:setup'
-#   before 'check:linked_files', 'puma:nginx_config'
-#   after 'puma:smart_restart', 'nginx:restart'
-# end
+namespace :deploy do
+  before 'check:linked_files', 'set:master_key'
+  before 'check:linked_files', 'config:push'
+  before 'check:linked_files', 'puma:jungle:setup'
+  # before 'check:linked_files', 'puma:nginx_config'
+  after 'puma:smart_restart', 'nginx:restart'
+end
 
-# namespace :set do
-#   task :master_key do
-#     on roles(:app), in: :sequence, wait: 10 do
-#       unless test("[ -f #{shared_path}/config/master.key ]")
-#         upload! 'config/master.key', "#{shared_path}/config/master.key"
-#       end
-#     end
-#   end
-# end
-bundle_wrapper_path = "/home/deployer/.rvm/gems/ruby-2.7.1/wrappers/bundle"
-
-namespace :puma do
-  desc "Restart puma"
-  task :restart do
-    on roles(:app) do
-      execute "cd #{release_path} && #{bundle_wrapper_path} exec pumactl -P #{shared_path}/tmp/pids/puma.pid restart"
+namespace :set do
+  task :master_key do
+    on roles(:app), in: :sequence, wait: 10 do
+      unless test("[ -f #{shared_path}/config/master.key ]")
+        upload! 'config/master.key', "#{shared_path}/config/master.key"
+      end
     end
   end
 end
-
-after "deploy:finished", "puma:restart"
