@@ -21,7 +21,7 @@ namespace :deploy do
   before 'check:linked_files', 'config:push'
   before 'check:linked_files', 'puma:jungle:setup'
   before 'check:linked_files', 'puma:nginx_config'
-  after 'puma:smart_restart', 'nginx:restart'
+  after "deploy:finished", "restart_puma:restart"
 end
 
 namespace :set do
@@ -30,6 +30,17 @@ namespace :set do
       unless test("[ -f #{shared_path}/config/master.key ]")
         upload! 'config/master.key', "#{shared_path}/config/master.key"
       end
+    end
+  end
+end
+
+bundle_wrapper_path = "/home/deployer/.rvm/gems/ruby-2.7.1/wrappers/bundle"
+
+namespace :restart_puma do
+  desc "Restart puma"
+  task :restart do
+    on roles(:app) do
+      execute "cd #{release_path} && #{bundle_wrapper_path} exec pumactl -P #{shared_path}/tmp/pids/puma.pid restart"
     end
   end
 end
