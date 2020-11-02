@@ -23,7 +23,7 @@ namespace :deploy do
   after 'puma:smart_restart', 'nginx:restart'
   after 'deploy:finished', 'set:restart_puma'
 end
-bundle_wrapper_path = "/home/deployer/.rvm/gems/ruby-2.6.5/wrappers/bundle"
+bundle_wrapper_path = "/home/deployer/.rvm/gems/ruby-2.7.1/wrappers/bundle"
 
 namespace :set do
   desc "Restart puma"
