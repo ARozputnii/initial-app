@@ -16,20 +16,20 @@ set :config_example_suffix, '.example'
 set :config_files, %w{config/database.yml}
 set :puma_conf, "#{shared_path}/config/puma.rb"
 
-namespace :deploy do
-  before 'check:linked_files', 'config:push'
-  before 'check:linked_files', 'puma:jungle:setup'
-  # before 'check:linked_files', 'puma:nginx_config'
-  after 'puma:smart_restart', 'nginx:restart'
-end
-
-namespace :set do
-  task :master_key do
-    on roles(:app), in: :sequence, wait: 10 do
-      unless test("[ -f #{shared_path}/config/master.key ]")
-        upload! 'config/master.key', "#{shared_path}/config/master.key"
-      end
-    end
-  end
-end
+# namespace :deploy do
+#   before 'check:linked_files', 'config:push'
+#   before 'check:linked_files', 'puma:jungle:setup'
+#   # before 'check:linked_files', 'puma:nginx_config'
+#   after 'puma:smart_restart', 'nginx:restart'
+# end
+#
+# namespace :set do
+#   task :master_key do
+#     on roles(:app), in: :sequence, wait: 10 do
+#       unless test("[ -f #{shared_path}/config/master.key ]")
+#         upload! 'config/master.key', "#{shared_path}/config/master.key"
+#       end
+#     end
+#   end
+# end
 
