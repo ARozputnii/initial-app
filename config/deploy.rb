@@ -21,15 +21,5 @@ namespace :deploy do
   # before 'check:linked_files', 'puma:jungle:setup'
   # before 'check:linked_files', 'puma:nginx_config'
   after 'puma:smart_restart', 'nginx:restart'
-  after 'deploy:finished', 'set:restart_puma'
+  after 'deploy:finished', 'puma:restart'
 end
-bundle_wrapper_path = "/home/deployer/.rvm/gems/ruby-2.7.1/wrappers/bundle"
-
-namespace :set do
-  desc "Restart puma"
-  task :restart_puma do
-    on roles(:app), in: :sequence, wait: 10 do
-      execute "cd #{release_path} && #{bundle_wrapper_path} exec pumactl -P #{shared_path}/tmp/pids/puma.pid restart" end
-  end
-end
-
