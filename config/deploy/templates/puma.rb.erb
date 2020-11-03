@@ -3,9 +3,9 @@
 directory '<%= current_path %>'
 rackup "<%=fetch(:puma_rackup)%>"
 environment '<%= fetch(:puma_env) %>'
-    <% if fetch(:puma_tag) %>
+<% if fetch(:puma_tag) %>
 tag '<%= fetch(:puma_tag)%>'
-    <% end %>
+<% end %>
 pidfile "<%=fetch(:puma_pid)%>"
 state_path "<%=fetch(:puma_state)%>"
 stdout_redirect '<%=fetch(:puma_access_log)%>', '<%=fetch(:puma_error_log)%>', true
@@ -13,33 +13,35 @@ stdout_redirect '<%=fetch(:puma_access_log)%>', '<%=fetch(:puma_error_log)%>', t
 
 threads <%=fetch(:puma_threads).join(',')%>
 
-    <%= puma_plugins %>
+<%= puma_plugins %>
 
-    <%= puma_bind %>
-    <% if fetch(:puma_control_app) %>
+<%= puma_bind %>
+<% if fetch(:puma_control_app) %>
 activate_control_app "<%= fetch(:puma_default_control_app) %>"
-    <% end %>
+<% end %>
 workers <%= puma_workers %>
-    <% if fetch(:puma_worker_timeout) %>
+<% if fetch(:puma_worker_timeout) %>
 worker_timeout <%= fetch(:puma_worker_timeout).to_i %>
-    <% end %>
+<% end %>
 
-    <% if puma_daemonize? %>
+<% if puma_daemonize? %>
 daemonize
-    <% end %>
+<% end %>
 
-    <% if puma_preload_app? %>
+restart_command '<%= fetch(:puma_restart_command) %>'
+
+<% if puma_preload_app? %>
 preload_app!
-    <% else %>
+<% else %>
 prune_bundler
-    <% end %>
+<% end %>
 
 on_restart do
   puts 'Refreshing Gemfile'
   ENV["BUNDLE_GEMFILE"] = "<%= fetch(:bundle_gemfile, "#{current_path}/Gemfile") %>"
 end
 
-    <% if puma_preload_app? and fetch(:puma_init_active_record) %>
+<% if puma_preload_app? and fetch(:puma_init_active_record) %>
 before_fork do
   ActiveRecord::Base.connection_pool.disconnect!
 end
@@ -49,4 +51,4 @@ on_worker_boot do
     ActiveRecord::Base.establish_connection
   end
 end
-    <% end %>
+<% end %>
