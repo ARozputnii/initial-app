@@ -12,7 +12,6 @@ require 'sshkit/sudo'
 require 'capistrano/scm/git'
 require 'capistrano/puma'
 require 'capistrano/puma/nginx'
-require 'whenever/capistrano'
 require 'capistrano/rails/assets'
 
 install_plugin Capistrano::Puma
