@@ -3,7 +3,7 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 set :rails_env, "production"
-server "study-nginx.ddns.net", user: fetch(:user), roles: %w[app db web], primary: true
+server "167.99.130.142", user: fetch(:user), roles: %w[app db web], primary: true
 
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
